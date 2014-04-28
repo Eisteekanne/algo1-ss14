@@ -1,0 +1,145 @@
+\input{includes/head}
+\title[Algorithmen I SS 14]{Tutorium 1}
+
+\begin{document}
+
+\begin{frame}
+  \maketitle
+\end{frame}
+
+\begin{frame}
+	\frametitle{Vorstellung}
+	\begin{itemize}
+		\item Name?
+		\item Studiengang?
+		\item Semester?
+		\item …
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Organisatorisches}
+	\begin{description}
+		\item[Folien] \url{https://github.com/Eisteekanne/algo1-ss14}
+		\item[Mail] \href{mailto:lena.k.winter@gmail.com}{lena.k.winter@gmail.com}
+	\end{description}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Übungsbetrieb}
+	\begin{itemize}
+		\item Jeweils Mittwoch bis Freitag der folgenden Woche ein Übungsblatt
+		\item Abgabe zu zweit möglich
+		\item Tutoriumsnummer groß in die rechte obere Ecke
+		\item Pseudocode gut dokumentieren und verständlich halten
+		\item Programmieraufgaben (später im Semester)
+		\item \url{https://praktomat.cs.kit.edu/algo1_2014_SS/}
+		\item Mittsemesterklausur
+		\item Nichts verpflichtend, insgesamt 3 Bonuspunkte möglich
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Korrektur 1.Übungsblatt}
+	\begin{itemize}
+		\item Aufgabenstellung lesen!
+		\item Auf Randpunkte achten (z.B. n=0)
+		\item Pseudocode kommentieren
+	\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{O-Kalkül}
+	\begin{block}{Formale Definition}
+		\begin{align*}
+			\mathcal{O}(f(n)) &= \{g(n):{\color{red}\exists} c > 0: \exists n_0 \in \mathbb{N}: \forall n \ge n_0: g(n) {\color{red}\le} c \cdot f(n)\}\\
+			\Omega(f(n)) &= \{g(n):{\color{red}\exists} c > 0: \exists n_0 \in \mathbb{N}: \forall n \ge n_0: g(n) {\color{red}\ge} c \cdot f(n)\}\\
+			\Theta(f(n)) &= \mathcal{O}(f(n)) \cap \Omega(f(n))\\
+			o(f(n)) &= \{g(n):{\color{red}\forall} c > 0: \exists n_0 \in \mathbb{N}: \forall n \ge n_0: g(n) {\color{red}\le} c \cdot f(n)\}\\
+			\omega(f(n)) &= \{g(n):{\color{red}\forall} c > 0: \exists n_0 \in \mathbb{N}: \forall n \ge n_0: g(n) {\color{red}\ge} c \cdot f(n)\}\\
+		\end{align*}
+	\end{block}
+\end{frame}
+
+
+
+\begin{frame}
+	\frametitle{(Vereinfachtes) Master-Theorem}
+	\begin{center}
+		Für positive Konstanten $a, b, c, d$, sei $n = b^k$ für ein $k \in \mathbb{N}$
+			$$
+				T(n) = \begin{cases}
+					a, &\text{falls } n = 1\\
+					c n + d T(\frac{n}{b}), &\text{falls } n > 1
+				\end{cases}
+			$$
+		Es gilt dann
+			$$
+				T(n) = \begin{cases}
+					\Theta(n), &\text{falls } d < b\\
+					\Theta(n \log(n)), &\text{falls } d = b\\
+					\Theta(n^{\log_b{d}}), &\text{falls } d > b\\
+				\end{cases}
+			$$
+	\end{center}
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Schleifeninvarianten}
+	\begin{itemize}
+		\item Gilt zu Beginn
+		\item und nach jedem Durchlauf der Schleife
+		\item Beweis funktioniert wie bei vollständiger Induktion
+		\item Geschickte Wahl der Invariante zum Beweis der Korrektheit
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Beispiel: Überprüfen ob Mengen disjunkt sind}
+	\begin{algorithm}[H]
+		\SetKwInOut{Input}{Eingabe}
+		\SetKwInOut{Output}{Ausgabe}
+		\Input{Array $A$ der Länge $n$ und Array $B$ der Länge $k$}
+		\Output{$true$ wenn $A$ und $B$ disjunkt sind, sonst $false$}
+		\SetKwFunction{Initialization}{Initialization}
+		\SetKwData{b}{b}
+		\SetKwData{C}{c}
+		\SetKwArray{A}{A}
+		\SetKwArray{B}{B}
+		\SetKwData{I}{i}
+		\SetKwData{J}{j}
+		\SetKwData{K}{k}
+		\SetKwData{N}{n}
+		\b = true\\
+		\For{\I = 0 \KwTo $\N - 1$}{
+			\C = true\\
+			\For{\J = 0 \KwTo $\K - 1$}{
+				\If{\A{i} == \B{j}} {
+					\C = false\\
+				}
+				\b = $\C \And \b$\\
+			}
+		}
+		\Return{\b}\\
+	\end{algorithm}
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Wahr oder Falsch?}
+	\begin{itemize}
+		\item {\only<2->{\color{green}}$7n + 4 \in \mathcal{O}(n)$}
+		\item {\only<3->{\color{red}}$n \log{n} \in \mathcal{O}(n)$}
+		\item {\only<4->{\color{red}}$n(n+1) \in \Theta(n^3)$}
+		\item {\only<5->{\color{green}}$n^n + n^5 \in \Omega(n)$}
+		\item {\only<6->{\color{red}}$n + n! \in \Omega(n^n)$}
+		\item {\only<7->{\color{red}}$n + 10 \in o(n)$}
+		\item {\only<8->{\color{green}}$\log_n{n} \in \mathcal{O}(1)$}
+		\item {\only<9->{\color{red}}$n^2 \in \omega(n^2)$}
+	\end{itemize}
+\end{frame}
+
+\end{document}
+\end{document}
