@@ -1,0 +1,75 @@
+\input{includes/head}
+\title[Algorithmen I SS 14]{Tutorium 3}
+
+\usepackage{alltt}
+
+\TitleImage[width=\titleimagewd]{images/title}
+
+\begin{document}
+
+\begin{frame}
+  \maketitle
+\end{frame}
+
+\begin{frame}
+	\Huge
+	\begin{center}
+		Übungsblatt \textbf{2}.
+	\end{center}
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Hashing Aufgabe 2}
+	Gegeben sei ein Array A = A[1], . . . , A[n] mit n Zahlen in beliebiger Reihenfolge.
+	Für eine gegebenen Zahl x soll ein Paar (A[i], A[j]), 1 $\leq$ i, j $\leq$ n gefunden werden, für das
+	gilt: A[i] + A[j] = x.
+
+	\begin{enumerate}
+		\item Geben Sie eine Lösung für x = 33 und A = (7, 15, 21, 14, 18, 3, 9) an.
+		\item Geben Sie einen effizienten Algorithmus an, der das Problem in erwarteter Zeit $\mathcal{O}(n)$ löst, und bei Erfolg ein Paar (A[i], A[j]) ausgibt, ansonsten Nil.
+	\end{enumerate}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Kreativaufgabe}
+
+	\begin{itemize}
+		\item[a)] Entwerfen Sie eine Realisierung eines \textit{SparseArray} (auf deutsch soviel wie "`spärlich besetztes Array"'). Dabei handelt es sich um eine Datenstruktur mit 
+			den Eigenschaften eines beschränkten Arrays, die zusätzlich schnelle Erzeugung und schnellen Reset ermöglicht.
+			Nehmen Sie dabei an, dass \textbf{allocate} beliebig viel \textit{uninitialisierten} Speicher in konstanter Zeit liefert. Im Detail habe das \textit{SparseArray} folgende Eigenschaften:
+		\begin{itemize}
+			\item Ein \textit{SparseArray} mit n Slots braucht $\mathcal{O}(n)$ Speicher.
+			\item Erzeugen eines leeren \textit{SparseArray} mit \textit{n} Slots braucht $\mathcal{O}(1)$ Zeit.
+			\item Das \textit{SparseArray} unterstützt eine Operation \textit{reset}, die es in $\mathcal{O}(1)$ Zeit in leeren Zustand versetzt.
+			\item Das \textit{SparseArray} unterstützt die Operation \textit{get(i)} und \textit{set(i, x)}. Dabei liefert \textit{A.get(i)} den Wert, der sich im \textit{i}-ten Slot des \textit{SparseArray A} befindet;\\
+				\textit{A.set(i, x)} setzt das Element im i-ten Slot auf den Wert x. Wurde der i-te Slot seit der Erzeugung bzw. dem letzten reset noch nicht mit auf einen 
+				bestimmten Wert gesetzt, so liefert A.get(i) einen speziellen Wert $\bot$. Die Operationen get und set dürfen zudem beide nicht mehr als $\mathcal{O}(1)$ Zeit verbrauchen (man nennt so etwas \textit{wahlfreien 	
+				Zugriff}, engl. \textit{random access})
+		\end{itemize}
+	\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{Kreativaufgabe}
+
+	\begin{itemize}
+		\item[b)] Nehmen Sie an, dass die Datenelemente, die Sie im \textit{SparseArray} ablegen wollen, recht groß sind (also z.B. nicht nur einzelne Zahlen, sondern Records mit 10, 20 oder mehr Einträgen).
+			Geht Ihre Realisierung unter dieser Annahme sparsam oder verschwenderisch mit dem Speicherplatz um? Wenn Sie Ihre Realisierung für verschwenderisch halten, überlegen Sie
+			ob und wie Sie es besser machen können.
+	\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{Kreativaufgabe}
+
+	\begin{itemize}
+		\item[c)] Vergleichen Sie Ihr \textit{SparseArray} mit bounded Arrays. Welche Vorteile und Nachteile sehen
+			Sie im Hinblick auf den Speicherverbrauch und auf das Iterieren über alle Elemente mit set eingefügten Elemente?
+	\end{itemize}
+
+\end{frame}
+
+\end{document}
