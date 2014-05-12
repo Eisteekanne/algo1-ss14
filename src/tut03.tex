@@ -159,7 +159,7 @@
 	\begin{frame}{Hashing Aufgabe 1 b) Lösung}
 		\begin{block}{Speicherbedarf}
 			\begin{itemize}
-				\item mit Listen: $|\text{Zeiger}| + |\text{Elemente}| + |\text{Nullzeiger}| = 10 + 10 + 11 = 30$
+				\item mit Listen: $|\text{Zeiger}| + |\text{Elemente}| + |\text{Nullzeiger}| = 10 + 10 + 11 = 31$
 				\item mit linearer Suche: $11$
 			\end{itemize}
 		\end{block}
@@ -240,7 +240,7 @@ Aus diesem folgt das die erwartete Laufzeit von Einfügen und Tabellenlookup in 
 
 \end{frame}
 \begin{frame}
-	\frametitle{Kreativaufgabe Lösung a)}
+	\frametitle{Kreativaufgabe Lösung b)}
 	\begin{itemize}
 		\item Die Lösung aus a) ist insofern verschwenderisch, dass n Slots für Nutzdaten allokiert
 		werden, die zwar uninitialisiert aber reserviert sind. Stattdessen, sollte man die Nutzdaten
@@ -263,7 +263,7 @@ Aus diesem folgt das die erwartete Laufzeit von Einfügen und Tabellenlookup in 
 \end{frame}
 
 \begin{frame}
-	\frametitle{Kreativaufgabe Lösung a)}
+	\frametitle{Kreativaufgabe Lösung c)}
 	\begin{itemize}
 		\item Iterieren dauert nur O(m) statt O(n) Zeit. Der Speicherverbrauch ist schlechter, wenn die
 			Nutzdatenelemente klein sind. Für große Nutzdatenelemente kann der Speicherverbrauch sogar erheblich besser sein,
